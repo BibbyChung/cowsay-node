@@ -6,8 +6,12 @@ const cowsay = require('cowsay');
 const request = require('request');
 const cheerio = require('cheerio');
 const _ = require("lodash");
+const compression = require('compression');
 
 const app = exp();
+
+// gzip
+app.use(compression());
 
 //security
 app.use(helmet());
