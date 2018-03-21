@@ -1,15 +1,29 @@
-const express = require('express');
-const cowsay = require("cowsay");
-const request = require("request");
-const cheerio = require("cheerio");
+const exp = require('express');
+const favicon = require('serve-favicon');
+const helmet = require('helmet');
+const path = require('path');
+const cowsay = require('cowsay');
+const request = require('request');
+const cheerio = require('cheerio');
 
-// Constants
-const PORT = 8080;
+const app = exp();
 
-// App
-const app = express();
+//security
+app.use(helmet());
+// app.use(helmet.noCache());
+app.use(helmet.hsts({
+  maxAge: 31536000,
+  includeSubdomains: true
+}));
 
-app.get("/", function (req, res) {
+// static files
+const p = './public';
+const publicFolderPath = path.join(__dirname, p);
+
+app.use(favicon(path.join(publicFolderPath, '/favicon.ico')));
+app.use(exp.static(publicFolderPath));
+
+app.get('/', function (req, res) {
 
   var options = {
     method: 'GET',
@@ -33,8 +47,8 @@ Deepak Chopra Quote:
   });
 });
 
-app.get("/:text", function (req, res) {
-  let text = "Hi Awesome People!";
+app.get('/:text', function (req, res) {
+  let text = 'xxxxxxxx';
   try {
     text = req.params.text;
   } catch (e) { }
@@ -70,4 +84,5 @@ ${cowsay.say({
 `;
 }
 
-app.listen(PORT, () => console.log(`Running on http://localhost:${PORT}`));
+const PORT = 8080;
+app.listen(PORT, () => console.log(`=> 0.0.0.0:${PORT}`));

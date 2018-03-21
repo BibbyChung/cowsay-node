@@ -12,6 +12,8 @@
     "cheerio": "^1.0.0-rc.2",
     "cowsay": "^1.1.9",
     "express": "^4.15.3",
-    "request": "^2.85.0"
+    "helmet": "^3.12.0",
+    "request": "^2.85.0",
+    "serve-favicon": "^2.4.5"
   }
 }
