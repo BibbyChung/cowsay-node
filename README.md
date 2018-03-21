@@ -4,7 +4,7 @@
 
 1. add the random "Deepak Chopra Quote".
 1. add Dockerfile in project.
-2. put docker container to [bibbynet/express-cowsay](https://hub.docker.com/r/bibbynet/express-cowsay). 
+2. put docker container to [bibbynet/cowsay-node](https://hub.docker.com/r/bibbynet/cowsay-node). 
  
 
 ## Build Container
@@ -40,7 +40,7 @@ version: "3.5"
 
 services:
   cow-say: 
-    image: bibbynet/express-cowsay
+    image: bibbynet/cowsay-node
     ports:
       - 8080:8080
 ```
