@@ -2,8 +2,7 @@
 
 ## Features
 
-1. add the random "Deepak Chopra Quote".
-1. add Dockerfile in project.
+1. show random "Deepak Chopra Quote".
 2. put docker container to [bibbynet/cowsay-node](https://hub.docker.com/r/bibbynet/cowsay-node). 
  
 
