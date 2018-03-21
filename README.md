@@ -47,5 +47,3 @@ services:
 
 
 Enjoy it. ^_____^ ..
-
-Fork from [cassilup/cowsay-express](https://github.com/cassilup/cowsay-express).
