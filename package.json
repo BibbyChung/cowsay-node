@@ -1,0 +1,17 @@
+{
+  "name": "express_cowsay",
+  "version": "1.0.0",
+  "description": "Cowsay running over Express",
+  "author": "Cassi Lup <cassi.lup@gmail.com>",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "build": "docker build -t bibbynet/express-cowsay ."
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "cowsay": "^1.1.9",
+    "express": "^4.15.3",
+    "request": "^2.85.0"
+  }
+}
