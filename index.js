@@ -5,6 +5,7 @@ const path = require('path');
 const cowsay = require('cowsay');
 const request = require('request');
 const cheerio = require('cheerio');
+const _ = require("lodash");
 
 const app = exp();
 
@@ -23,25 +24,46 @@ const publicFolderPath = path.join(__dirname, p);
 app.use(favicon(path.join(publicFolderPath, '/favicon.ico')));
 app.use(exp.static(publicFolderPath));
 
+// method
+const breakText = (characterNum, breakline, text) => {
+  const textChain = _.chain(text);
+  const arr = [];
+  let isDone = false;
+  let index = 0;
+  while (!isDone) {
+    const cArr = textChain.drop(index * characterNum).take(characterNum).value();
+    if (cArr.length == 0) {
+      isDone = true;
+      break;
+    }
+    const w = cArr.join('');
+    arr.push(w);
+    index += 1;
+  }
+  return arr.join(breakline);
+}
+
+
+// router
 app.get('/', function (req, res) {
 
   var options = {
     method: 'GET',
-    url: 'http://www.wisdomofchopra.com/iframe.php'
+    url: 'http://more.handlino.com/sentences.json'
   };
 
   request(options, function (error, response, body) {
     if (error) throw new Error(error);
 
-    var $ = cheerio.load(body);
-    const st = $('h2', '#quote').text().replace(/\"/g, '').replace(/\_/g, '')
-    const w = `
-Deepak Chopra Quote:
+    const obj = JSON.parse(body);
+    let txt = obj.sentences[0];
+    txt = breakText(18, '\r', txt);
 
-" ${st}"
-
-    `;
-    const responseText = setCowsaySentence(w);
+    const st = `
+長官說：
+${txt}
+`;
+    const responseText = setCowsaySentence(st);
     res.send(responseText);
 
   });

@@ -13,6 +13,7 @@
     "cowsay": "^1.1.9",
     "express": "^4.15.3",
     "helmet": "^3.12.0",
+    "lodash": "^4.17.5",
     "request": "^2.85.0",
     "serve-favicon": "^2.4.5"
   }
