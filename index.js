@@ -5,8 +5,12 @@ const path = require('path');
 const cowsay = require('cowsay');
 const request = require('request');
 const cheerio = require('cheerio');
+const compression = require('compression');
 
 const app = exp();
+
+// gzip
+app.use(compression());
 
 //security
 app.use(helmet());
