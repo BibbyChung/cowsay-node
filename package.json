@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "build": "docker build -t bibbynet/express-cowsay ."
+    "build": "docker build -t bibbynet/cowsay-node ."
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
