@@ -1,0 +1,63 @@
+---
+
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: cowsay-ns
+
+--- 
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cowsay-deploy
+  namespace: cowsay-ns
+  labels:
+    app: cowsay-lb
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cowsay-lb
+  template:
+    metadata:
+      labels:
+        app: cowsay-lb
+    spec:
+      containers:
+      - name: cowsay-lb
+        image: bibbynet/cowsay-node
+        ports:
+        - containerPort: 8080
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: cowsay-svc
+  namespace: cowsay-ns
+spec:
+  selector:
+    app: cowsay-lb
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  type: NodePort
+
+
+---
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: cowsay-ingress
+  namespace: cowsay-ns
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          serviceName: cowsay-app
+          servicePort: 80
