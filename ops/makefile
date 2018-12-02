@@ -8,6 +8,6 @@ workspace-down:
 heroku-web-build:
 	docker build -t registry.heroku.com/cowsay-node/web -f ./heroku/web.dockerfile ../
 heroku-web-up:
-	docker run --rm -p 3000:3000 -e PORT=3000 registry.heroku.com/cowsay-node/web
+	docker run --rm -p 3000:3000 -e PORT=3000 -e DOMAIN=localhost registry.heroku.com/cowsay-node/web
 heroku-web-publish:
 	docker run --rm -v /var/run/docker.sock:/var/run/docker.sock bb/heroku-cli bash -c "heroku container:login && docker push registry.heroku.com/cowsay-node/web && heroku container:release web -a cowsay-node"
