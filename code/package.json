@@ -5,10 +5,14 @@
   "author": "Cassi Lup <cassi.lup@gmail.com>",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "build": "docker build -t bibbynet/cowsay-node ."
+    "start": "node index.js"
   },
   "dependencies": {
+    "@types/node": "^10.12.11",
+    "@types/express": "^4.16.0",
+    "@types/cheerio": "^0.22.10",
+    "@types/compression": "^0.0.36",
+    "@types/serve-favicon": "^2.2.30",
     "cheerio": "^1.0.0-rc.2",
     "compression": "^1.7.2",
     "cowsay": "^1.1.9",

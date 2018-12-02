@@ -1,0 +1,11 @@
+*/node_modules
+*/spec
+*/.vscode
+*/.dockerignore
+*/.git
+*/.gitignore
+*/Dockerfile*
+*/docker-compose*
+*/npm-debug.log
+README.md
+LICENSE%

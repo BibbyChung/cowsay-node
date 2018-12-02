@@ -1,0 +1,12 @@
+version: "3.3"
+
+services:
+
+  workspace: 
+    image: teracy/angular-cli
+    working_dir: /app
+    ports: 
+      - "9100:8080"
+    volumes:
+      - ../../:/app/
+    command: ["tail", "-f", "/dev/null"]
