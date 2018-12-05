@@ -1,4 +1,4 @@
-FROM node:8.11-alpine
+FROM node:8.14-alpine
 
 WORKDIR /app/code
 
@@ -12,13 +12,11 @@ COPY ./code/package-lock.json /app/code
 RUN npm i
 
 COPY ./code /app/code
-COPY ./ops/heroku/start.sh /app
-COPY ./ops/heroku/nginx /etc/nginx
+COPY ./ops/heroku/start.sh /start.sh
+COPY ./ops/heroku/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY ./ops/heroku/supervisor/supervisord.conf /etc/supervisord.conf
 
 RUN mkdir -p /run/nginx &&\
-    chmod +x /app/start.sh
+    chmod +x /start.sh
 
-CMD export NGINX_PORT=$PORT &&\
-    export NGINX_DOMAIN=$DOMAIN &&\
-    sh /app/start.sh
+CMD export NGINX_PORT=$PORT && sh /start.sh
