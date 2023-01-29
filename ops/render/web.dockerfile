@@ -1,8 +1,7 @@
-FROM node:8.11-alpine
+FROM node:16.19-alpine
 
 RUN mkdir -p /app/code
 WORKDIR /app/code
-EXPOSE 8080
 
 COPY ./code/package.json /app/code
 COPY ./code/package-lock.json /app/code
